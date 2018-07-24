@@ -1,0 +1,24 @@
+{
+  "name": "career_gui",
+  "version": "1.0.0",
+  "description": "a vue.js career guidance system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kompanymwega/career_gui.git"
+  },
+  "keywords": [
+    "career",
+    "guidance",
+    "project"
+  ],
+  "author": "Gideon Collins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kompanymwega/career_gui/issues"
+  },
+  "homepage": "https://github.com/kompanymwega/career_gui#readme"
+}
