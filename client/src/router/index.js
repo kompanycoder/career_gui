@@ -4,6 +4,8 @@ import Home from '@/components/Home'
 import Register from '@/components/Register'
 import about from '@/components/about'
 import profile from '@/components/profile'
+import JobList from '@/components/guidance/jobs/JobList'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -20,6 +22,11 @@ export default new Router({
       component: Register
     },
     {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
       path: '/about',
       name: 'about',
       component: about
@@ -28,6 +35,11 @@ export default new Router({
       path: '/profile',
       name: 'profile',
       component: profile
+    },
+    {
+      path: '/joblist',
+      name: 'JobList',
+      component: JobList
     }
   ]
 })

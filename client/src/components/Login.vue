@@ -1,7 +1,6 @@
 <template>
   <b-row class="justify-content-md-center">
     <b-col cols="6">
-      <h2>Please Register</h2>
       <div v-if="errors && errors.length">
         <div v-for="error of errors" :key="error.id">
           <b-alert show>{{error.message}}</b-alert>
@@ -13,17 +12,17 @@
                   :label-cols="4"
                   breakpoint="md"
                   label="Enter Username">
-          <b-form-input id="username" :state="state" v-model.trim="register.username"></b-form-input>
+          <b-form-input id="username" :state="state" v-model.trim="login.username"></b-form-input>
         </b-form-group>
         <b-form-group id="fieldsetHorizontal"
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
                   label="Enter Password">
-          <b-form-input type="password" id="password" :state="state" v-model.trim="register.password"></b-form-input>
+          <b-form-input type="password" id="password" :state="state" v-model.trim="login.password"></b-form-input>
         </b-form-group>
-        <b-button type="submit" variant="primary">Register</b-button>
-        <b-button type="button" variant="success" @click="$router.go(-1)">Cancel</b-button>
+        <b-button type="submit" variant="primary">Login</b-button>
+        <b-button type="button" variant="success" @click.stop="register()">Register</b-button>
       </b-form>
     </b-col>
   </b-row>
@@ -32,22 +31,23 @@
 <script>
 
 import axios from 'axios'
+
 export default {
-  name: 'Register',
+  name: 'Login',
   data () {
     return {
-      register: {},
+      login: {},
       errors: []
     }
   },
   methods: {
     onSubmit (evt) {
       evt.preventDefault()
-      axios.post(`http://localhost:8081/api/auth/register/`, this.register)
+      axios.post(`http://localhost:8081/api/auth/login/`, this.login)
       .then(response => {
-        alert("Registered successfully")
+        localStorage.setItem('jwtToken', response.data.token)
         this.$router.push({
-          name: 'Login'
+          name: 'JobList'
         })
       })
       .catch(e => {
@@ -55,6 +55,11 @@ export default {
         this.errors.push(e)
       })
     },
+    register () {
+      this.$router.push({
+        name: 'Register'
+      })
+    }
   }
 }
 </script>

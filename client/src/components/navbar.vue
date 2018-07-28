@@ -8,9 +8,11 @@
         </button>
         <div class="collapse navbar-collapse navbar-right" id="navbar">
             <div class="navbar-nav nav-group">
-            <a class="nav-item nav-link" href="#"><router-link to="/Register">Register/Login</router-link></a>
+            <a class="nav-item nav-link" href="#"><router-link to="/Register">Register</router-link></a>
+            <a class="nav-item nav-link" href="#"><router-link to="/login">Login</router-link></a>
             <a class="nav-item nav-link" href="#"><router-link to="/about">About</router-link></a>
             <a class="nav-item nav-link" href="#"><router-link to="/profile">Profile</router-link></a>
+            <a class="nav-item nav-link" href="#"><router-link to="/joblist">Job_List</router-link></a>
             </div>
         </div>
        </div>
