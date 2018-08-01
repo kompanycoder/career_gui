@@ -120,9 +120,11 @@ app.use(function(err, req, res, next) {
 
     res.status(err.statusCode || 500).json(err);
 });
-
- mongoose = require('mongoose');
+var Promise = require("bluebird");
+Promise.promisifyAll(require("mongoose"));
+mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+assert.equal(query.exec().constructor, require('bluebird'));
 mongoose.connect('mongodb://localhost:27017/career_gui', { useNewUrlParser: true })
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
@@ -131,5 +133,6 @@ mongoose.connect('mongodb://localhost:27017/career_gui', { useNewUrlParser: true
   var auth = require('./routes/auth');
   app.use('/api/auth', auth);
 
+  
 
 module.exports = app;

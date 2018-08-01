@@ -6,6 +6,7 @@ import about from '@/components/about'
 import profile from '@/components/profile'
 import JobList from '@/components/guidance/jobs/JobList'
 import Login from '@/components/Login'
+import 'vue2-animate/dist/vue2-animate.min.css'
 
 Vue.use(Router)
 

@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
            <nav-component></nav-component>
-          <router-view class="adjustedHeight"/>
-        </div>
+           <router-view class="adjustedHeight col-lg-12"/>
+           </div>
        
         </div>
   </div>
 </template>
-
 <script>
 import navComponent from '../src/components/navbar'
 export default {
@@ -19,7 +18,6 @@ export default {
   }
 }
 </script>
-
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -30,7 +28,5 @@ export default {
 }
 .adjustedHeight{
   margin-top: 70px;
-
-
 }
 </style>
