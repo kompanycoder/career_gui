@@ -3,11 +3,6 @@
     <b-row class="justify-content-md-center">
     <b-col cols="6">
       <h2>Please Register</h2>
-      <div v-if="errors && errors.length">
-        <div v-for="error of errors" :key="error.id">
-          <b-alert show>{{error.message}}</b-alert>
-        </div>
-      </div>
       <b-form>
           <b-form-group id="fieldsetHorizontal"
                   horizontal
@@ -16,7 +11,7 @@
                   description="Email that you use.."
                   label="Enter your email"
                   label-for="inputHorizontal">
-            <b-form-input id="inputHorizontal" v-model="user.email"></b-form-input>
+            <b-form-input id="inputHorizontal" v-model="email"></b-form-input>
           </b-form-group>
         <b-form-group id="fieldsetHorizontal"
                   horizontal
@@ -24,9 +19,9 @@
                   breakpoint="md"
                   description="Input a strong password"
                   label="Enter your password"
-                  label-for="inputHorizontal">
+                  label-for="inputHorizontal1">
                   
-          <b-form-input type="password" id="inputHorizontal" v-model="user.password"></b-form-input>
+          <b-form-input type="password" id="inputHorizontal1" v-model="password"></b-form-input>
         </b-form-group>
         <button class="btn btn-primary" type="submit" @click="Register()">Register</button>
         <b-button type="button" variant="success" @click="$router.go(-1)">Cancel</b-button>
@@ -37,23 +32,22 @@
 </template>
 
 <script>
-import AuthenticationService from '../services/AuthentificationService'
+import AuthenticationService from '@/services/AuthenticationService'
 export default {
   name: 'Register',
   data () {
     return {
-      errors: [],
-      user:{
         email:'',
         password:''
-      }
+    }
   },
   methods: {
-    async Register(){
-     const responce = await AuthenticationService.Register({
-        email: this.user.email,
-        password: this.user.password
+    async Register() {
+     const response = await AuthenticationService.register({
+        email: this.email,
+        password: this.password
       })
+      console.log(response.data)
     }
   }
 }
