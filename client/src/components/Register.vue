@@ -37,22 +37,23 @@
 </template>
 
 <script>
-
-import axios from 'axios'
+import AuthenticationService from '../services/AuthentificationService'
 export default {
   name: 'Register',
   data () {
     return {
       errors: [],
-      user:{email:'',
-      password:''
+      user:{
+        email:'',
+        password:''
       }
-    }
   },
   methods: {
-    Register(){
-      console.log("Congrats, "+this.user.email+" you're Registered as a new user.")
-
+    async Register(){
+     const responce = await AuthenticationService.Register({
+        email: this.user.email,
+        password: this.user.password
+      })
     }
   }
 }
