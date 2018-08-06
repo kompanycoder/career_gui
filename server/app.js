@@ -4,7 +4,7 @@ const cors  = require('cors')
 const morgan = require('morgan')
 const app =express()
 
-app.use(morgan('combine'))
+app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -18,3 +18,4 @@ app.get('/status', (req,res) => {
     message:`Hello server is running! Have a nice day!`
   })
 })
+app.listen(process.env.PORT || 8082)
