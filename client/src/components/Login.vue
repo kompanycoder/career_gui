@@ -6,23 +6,28 @@
           <b-alert show>{{error.message}}</b-alert>
         </div>
       </div>
-      <b-form @submit="onSubmit">
+      <b-form>
+          <b-form-group id="fieldsetHorizontal"
+                  horizontal
+                  :label-cols="4"
+                  breakpoint="md"
+                  description="Email that you use.."
+                  label="Enter your email"
+                  label-for="inputHorizontal">
+            <b-form-input id="inputHorizontal" v-model="user.email"></b-form-input>
+          </b-form-group>
         <b-form-group id="fieldsetHorizontal"
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
-                  label="Enter Username">
-          <b-form-input id="username" :state="state" v-model.trim="login.username"></b-form-input>
+                  description="Input a strong password"
+                  label="Enter your password"
+                  label-for="inputHorizontal">
+                  
+          <b-form-input type="password" id="inputHorizontal" v-model="user.password"></b-form-input>
         </b-form-group>
-        <b-form-group id="fieldsetHorizontal"
-                  horizontal
-                  :label-cols="4"
-                  breakpoint="md"
-                  label="Enter Password">
-          <b-form-input type="password" id="password" :state="state" v-model.trim="login.password"></b-form-input>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Login</b-button>
-        <b-button type="button" variant="success" @click.stop="register()">Register</b-button>
+        <button class="btn btn-primary" type="submit" @click="Login()">Login</button>
+        <b-button type="button" variant="success" @click="$router.go(-1)">Cancel</b-button>
       </b-form>
     </b-col>
   </b-row>
@@ -36,29 +41,16 @@ export default {
   name: 'Login',
   data () {
     return {
-      login: {},
-      errors: []
+      errors: [],
+      user:{
+        email:'',
+        password:''
+      }
     }
   },
   methods: {
-    onSubmit (evt) {
-      evt.preventDefault()
-      axios.post(`http://localhost:8081/api/auth/login/`, this.login)
-      .then(response => {
-        localStorage.setItem('jwtToken', response.data.token)
-        this.$router.push({
-          name: 'JobList'
-        })
-      })
-      .catch(e => {
-        console.log(e)
-        this.errors.push(e)
-      })
-    },
-    register () {
-      this.$router.push({
-        name: 'Register'
-      })
+    Login(){
+      console.log("Congrats, "+this.user.email+" you're Logged in as a user.")
     }
   }
 }

@@ -1,5 +1,6 @@
 <template>
-  <b-row class="justify-content-md-center">
+  <div class="container">
+    <b-row class="justify-content-md-center">
     <b-col cols="6">
       <h2>Please Register</h2>
       <div v-if="errors && errors.length">
@@ -7,26 +8,32 @@
           <b-alert show>{{error.message}}</b-alert>
         </div>
       </div>
-      <b-form @submit="onSubmit">
+      <b-form>
+          <b-form-group id="fieldsetHorizontal"
+                  horizontal
+                  :label-cols="4"
+                  breakpoint="md"
+                  description="Email that you use.."
+                  label="Enter your email"
+                  label-for="inputHorizontal">
+            <b-form-input id="inputHorizontal" v-model="user.email"></b-form-input>
+          </b-form-group>
         <b-form-group id="fieldsetHorizontal"
                   horizontal
                   :label-cols="4"
                   breakpoint="md"
-                  label="Enter Username">
-          <b-form-input id="username" :state="state" v-model.trim="register.username"></b-form-input>
+                  description="Input a strong password"
+                  label="Enter your password"
+                  label-for="inputHorizontal">
+                  
+          <b-form-input type="password" id="inputHorizontal" v-model="user.password"></b-form-input>
         </b-form-group>
-        <b-form-group id="fieldsetHorizontal"
-                  horizontal
-                  :label-cols="4"
-                  breakpoint="md"
-                  label="Enter Password">
-          <b-form-input type="password" id="password" :state="state" v-model.trim="register.password"></b-form-input>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Register</b-button>
+        <button class="btn btn-primary" type="submit" @click="Register()">Register</button>
         <b-button type="button" variant="success" @click="$router.go(-1)">Cancel</b-button>
       </b-form>
     </b-col>
   </b-row>
+  </div>
 </template>
 
 <script>
@@ -36,25 +43,17 @@ export default {
   name: 'Register',
   data () {
     return {
-      register: {},
-      errors: []
+      errors: [],
+      user:{email:'',
+      password:''
+      }
     }
   },
   methods: {
-    onSubmit (evt) {
-      evt.preventDefault()
-      axios.post(`http://localhost:8081/api/auth/register/`, this.register)
-      .then(response => {
-        alert("Registered successfully")
-        this.$router.push({
-          name: 'Login'
-        })
-      })
-      .catch(e => {
-        console.log(e)
-        this.errors.push(e)
-      })
-    },
+    Register(){
+      console.log("Congrats, "+this.user.email+" you're Registered as a new user.")
+
+    }
   }
 }
 </script>

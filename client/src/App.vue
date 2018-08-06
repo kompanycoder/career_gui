@@ -2,8 +2,9 @@
   <div id="app">
       <div class="container-fluid">
         <div class="row">
-           <nav-component></nav-component>
-           <router-view class="adjustedHeight col-lg-12"/>
+           <nav-component class="col-lg-12"></nav-component>
+           <nav-login class="col-lg-12 adjusted"></nav-login>
+           <router-view class="col-lg-12 adjustedHeight"/>
            </div>
        
         </div>
@@ -12,6 +13,7 @@
 <script>
 import navComponent from '../src/components/navbar'
 import navLogin from '../src/components/navlogin'
+
 export default {
   name: 'App',
   components: {

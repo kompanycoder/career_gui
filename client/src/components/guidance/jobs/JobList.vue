@@ -3,7 +3,7 @@
     <b-col cols="12">
       <h2>
         Jobs List
-        <b-link href="#/add-book">(Add Job)</b-link> <br>
+        <b-link href="#/job">(Add Job)</b-link> <br>
         <b-link @click="logout()">(Logout)</b-link>
       </h2>
       
@@ -71,5 +71,5 @@ export default {
       });
     }
   }
-};
+}
 </script>
