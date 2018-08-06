@@ -11,10 +11,12 @@
 </template>
 <script>
 import navComponent from '../src/components/navbar'
+import navLogin from '../src/components/navlogin'
 export default {
   name: 'App',
   components: {
-    navComponent
+    navComponent,
+    navLogin
   }
 }
 </script>
@@ -27,6 +29,10 @@ export default {
   color: #2c3e50;
 }
 .adjustedHeight{
-  margin-top: 70px;
+  margin-top: 5px;
+  width: auto;
+}
+.adjusted{
+  margin-top: 50px;
 }
 </style>
